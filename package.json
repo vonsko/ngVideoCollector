@@ -1,0 +1,19 @@
+{
+  "name": "ng-video-collector",
+  "version": "0.0.1",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-if": "^2.0.0",
+    "gulp-load-plugins": "^1.1.0",
+    "gulp-sass": "^2.0.3",
+    "gulp-uglify": "^1.2.0",
+    "gulp-webserver": "^0.9.1"
+  },
+  "author": "wuja <vonsko@gmail.com>",
+  "license": "ISC"
+}
