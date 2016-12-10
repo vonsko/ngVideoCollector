@@ -1,0 +1,12 @@
+<md-toolbar layout="row" class="md-toolbar-tools">
+	<div class="md-toolbar-tools">
+		<h2><span>ngVideoCollector {{ $ctrl.some }}</span></h2>
+		<span flex></span>
+		<md-button class="md-accent md-raised" aria-label="Add new video to list" ng-click="addPanelVisible = !addPanelVisible">
+			Add video
+		</md-button>
+		<md-button class="md-fab md-flat md-mini" aria-label="Favorite" ng-click="$ctrl.toggleSearchPane()">
+			<md-icon md-font-set="material-icons" class="md-light">build</md-icon>
+		</md-button>
+	</div>
+</md-toolbar>

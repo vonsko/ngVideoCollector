@@ -15,5 +15,10 @@
     "gulp-webserver": "^0.9.1"
   },
   "author": "wuja <vonsko@gmail.com>",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-sourcemaps": "^1.9.1"
+  }
 }

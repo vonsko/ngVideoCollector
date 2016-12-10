@@ -1,0 +1,22 @@
+<top-bar></top-bar>
+<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding ng-show="$ctrl.currentPane === 'searchPane'">
+	<div>
+		<h2 class="md-accent"><span>wprowadź</span></h2>
+
+		<md-input-container aria-label="Search">
+			<label>Email</label>
+			<input ng-model="user.email" type="email">
+		</md-input-container>
+	</div>
+</md-content>
+
+
+<div flex layout="row">
+	<md-content flex id="content">
+		<md-icon md-svg-src="./assets/svg/avatar-1.svg" class="avatar"></md-icon>
+		<h2>Lia Luogo</h2>
+		<p>
+			I love cheese...
+		</p>
+	</md-content>
+</div>
