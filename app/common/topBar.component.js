@@ -1,7 +1,8 @@
 (function () {
 	let topBar = {
 		bindings: {
-			onTogglePane: "&"
+			onTogglePane: "&",
+			actions: "<"
 		},
 		require: {
 			app: "^app"
