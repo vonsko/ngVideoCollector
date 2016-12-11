@@ -1,21 +1,20 @@
-(function () {
+{
 	let AppController = function () {
-		this.currentPane = "";
-		this.togglePane = (target)  => {
-			this.currentPane = target === this.currentPane ? "" : target;
-		};
-		this.someActions = {
-			action1 (what) {
-				console.log("what - action1", what)
+		let ctrl = this;
+		ctrl.currentPanel = "videosPanel";
+
+		ctrl.actions = {
+			reloadVideosPanel (innerCallback) {
+				ctrl.currentPanel = "";
+				if(typeof innerCallback === "function") innerCallback();
+				ctrl.currentPanel = "videosPanel";
 			},
-			action2 (what) {
-				console.log("other action")
+			togglePanels () {
+				ctrl.currentPanel = ctrl.currentPanel === "searchPanel" ? "videosPanel" : "searchPanel";
 			}
 		};
-
-		console.log("this", this.someActions);
 	};
 
 	angular.module("common")
 		.controller("AppController", AppController);
-}());
+}

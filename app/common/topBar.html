@@ -1,12 +1,23 @@
-<md-toolbar layout="row" class="md-toolbar-tools">
+<md-toolbar layout="row">
 	<div class="md-toolbar-tools">
-		<h2><span>ngVideoCollector {{ $ctrl.some }}</span></h2>
+		<h2><span>ngVideoCollector</span></h2>
 		<span flex></span>
-		<md-button class="md-accent md-raised" aria-label="Add new video to list" ng-click="$ctrl.actions.action1('someshit')">
+		<md-button class="md-accent md-raised" aria-label="Add new video to list" ng-click="$ctrl.toggleSearchPanel()">
 			Add video
 		</md-button>
-		<md-button class="md-fab md-flat md-mini" aria-label="Favorite" ng-click="$ctrl.toggleSearchPane()">
-			<md-icon md-font-set="material-icons" class="md-light">build</md-icon>
-		</md-button>
+		<div md-theme="alt1">
+			<md-menu md-position-mode="target-right target">
+				<md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="$ctrl.openMenu($mdOpenMenu, $event)">
+					<md-icon md-menu-origin>build</md-icon>
+				</md-button>
+				<md-menu-content width="4" style="background: #fff">
+					<md-menu-item>
+						<md-button ng-click="$ctrl.clearDB()" class="md-primary md-hue-2">
+							<md-icon md-menu-align-target>delete_forever</md-icon> Clear database
+						</md-button>
+					</md-menu-item>
+				</md-menu-content>
+			</md-menu>
+		</div>
 	</div>
 </md-toolbar>

@@ -1,3 +1,3 @@
-(function () {
-	angular.module("common", []);
-}());
+{
+	angular.module("common", ["utils"]);
+}

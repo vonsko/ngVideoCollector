@@ -1,18 +1,3 @@
-<top-bar actions="$ctrl.someActions"></top-bar>
-<md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding ng-show="$ctrl.currentPane === 'searchPane'">
-	<div>
-		<h2 class="md-accent"><span>wprowadź</span></h2>
-
-		<md-input-container aria-label="Search">
-			<label>Email</label>
-			<input ng-model="user.email" type="email">
-		</md-input-container>
-	</div>
-</md-content>
-
-
-<div flex layout="row">
-	<md-content flex id="content">
-
-	</md-content>
-</div>
+<top-bar app-actions="$ctrl.actions"></top-bar>
+<search-panel ng-if="$ctrl.currentPanel === 'searchPanel'"></search-panel>
+<videos ng-if="$ctrl.currentPanel === 'videosPanel'"></videos>

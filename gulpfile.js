@@ -6,15 +6,21 @@ let ngAnnotate = require("gulp-ng-annotate");
 let paths 	= {
 	bowerJs: [
 		"./app/bower_components/angular/angular.js",
+		"./app/bower_components/lodash/dist/lodash.js",
+		"./app/bower_components/moment/min/moment-with-locales.js",
 		"./app/bower_components/angular-animate/angular-animate.js",
 		"./app/bower_components/angular-aria/angular-aria.js",
 		"./app/bower_components/angular-messages/angular-messages.js",
-		"./app/bower_components/angular-material/angular-material.js"
+		"./app/bower_components/angular-material/angular-material.js",
+		"./app/bower_components/angular-local-storage/dist/angular-local-storage.js"
 	],
 	js: [
 		"./app/app.module.js",
 		"./app/app.config.js",
 		"./app/components/components.module.js",
+		"./app/components/videos/videos.module.js",
+		"./app/components/videos/videos.service.js",
+		"./app/components/search/search.module.js",
 		"./app/components/**/*.js",
 		"./app/common/common.module.js",
 		"./app/common/**/*.js"

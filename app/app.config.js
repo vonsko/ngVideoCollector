@@ -1,4 +1,4 @@
-(function () {
+{
 	function materialThemeConfig ($mdThemingProvider) {
 		$mdThemingProvider
 			.theme("default")
@@ -9,15 +9,22 @@
 
 		$mdThemingProvider.theme("docs-dark", "default")
 			.primaryPalette("amber").dark();
+
+		$mdThemingProvider
+			.theme("alt1")
+			.primaryPalette("grey")
+			.accentPalette("blue-grey");
 	}
 
 	function materialIconConfig ($mdIconProvider) {
 		$mdIconProvider
-			.iconSet("social", "img/icons/sets/social-icons.svg", 24)
-			.defaultIconSet("img/icons/sets/core-icons.svg", 24);
+			.defaultFontSet("material-icons");
 	}
 
 	angular.module("ngVideoCollector")
 		.config(materialThemeConfig)
 		.config(materialIconConfig);
-}());
+}
+
+
+// youtube api key [ AIzaSyDjMxSP8blKtpsjZ_C6Yk5Eu-u-bugif3M ]

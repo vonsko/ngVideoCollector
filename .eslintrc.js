@@ -26,6 +26,8 @@ module.exports = {
 		]
 	},
     "globals": {
-		"angular": false
+		"angular": false,
+		"_": false,
+		"moment": false
 	}
 };

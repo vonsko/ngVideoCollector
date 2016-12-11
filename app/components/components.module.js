@@ -1,3 +1,7 @@
-(function () {
-	angular.module("components", []);
-}());
+{
+	angular.module("components", [
+		"videos",
+		"search",
+		"storage"
+	]);
+}
