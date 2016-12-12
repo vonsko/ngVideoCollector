@@ -1,0 +1,41 @@
+<md-toolbar md-theme="docs-dark" layout="row" class="md-accent md-hue-1">
+	<div class="md-toolbar-tools">
+		<span>Search for videos</span>
+	</div>
+</md-toolbar>
+<md-content md-theme="docs-dark" layout-padding>
+	<form ng-submit="$ctrl.search($ctrl.query)" style="padding: 0; margin-top: 1em">
+		<md-content md-theme="default" md-whiteframe="5" layout-padding layout-gt-xs="row">
+			<md-input-container flex="60">
+				<label>Search phrase</label>
+				<input ng-model="$ctrl.query.text" aria-label="search phrase …">
+			</md-input-container>
+
+			<md-input-container flex="20">
+				<label>Search engine</label>
+				<md-select ng-model="$ctrl.query.engine" aria-label="search engine">
+					<md-option ng-repeat="se in ['youtube', 'vimeo']" value="{{ se }}">
+						{{ se }}
+					</md-option>
+				</md-select>
+			</md-input-container>
+			<div flex="20">
+				<md-button type="submit" class="md-accent md-raised md-block" style="margin-top: 10px">search</md-button>
+			</div>
+		</md-content>
+	</form>
+
+	<md-content md-theme="default" md-whiteframe="5" ng-show="$ctrl.searchResults.length">
+		<md-list flex>
+			<md-subheader class="md-no-sticky">2 line item</md-subheader>
+			<md-list-item class="md-3-line" ng-repeat="item in $ctrl.searchResults">
+				<img ng-src="{{ item.snippet.thumbnails.default.url }}" alt="{{ item.snippet.title }}" style="margin: 1em 1em 1em 0;" />
+				<div class="md-list-item-text">
+					<h4>{{ item.snippet.title }}</h4>
+					<p>{{ item.snippet.description }}</p>
+				</div>
+				<md-icon md-font-set="material-icons" class="md-secondary md-hue-3" ng-click="$ctrl.addVideo(item)">add</md-icon>
+			</md-list-item>
+		</md-list>
+	</md-content>
+</md-content>

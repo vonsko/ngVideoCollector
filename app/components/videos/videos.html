@@ -1,0 +1,19 @@
+<div flex>
+	<md-toolbar layout="row" class="md-hue-1">
+		<div class="md-toolbar-tools">
+			<span>All videos</span>
+		</div>
+	</md-toolbar>
+
+	<md-list flex>
+		<md-subheader class="md-no-sticky">{{ $ctrl.videosList.length }} videos</md-subheader>
+		<md-list-item class="md-3-line" ng-repeat="item in $ctrl.videosList">
+			<img ng-src="{{ item.thumbnails.default.url }}" alt="{{ item.title }}" style="margin: 1em 1em 1em 0;" />
+			<div class="md-list-item-text">
+				<h4>{{ item.name }}</h4>
+				<p>{{ item.description }}</p>
+			</div>
+			<md-icon md-font-set="material-icons" class="md-secondary md-hue-3" ng-click="null" aria-label="add to fav">favorite_border</md-icon>
+		</md-list-item>
+	</md-list>
+</div>

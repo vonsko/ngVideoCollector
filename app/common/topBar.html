@@ -1,0 +1,23 @@
+<md-toolbar layout="row">
+	<div class="md-toolbar-tools">
+		<h2><span>ngVideoCollector</span></h2>
+		<span flex></span>
+		<md-button class="md-accent md-raised" aria-label="Add new video to list" ng-click="$ctrl.toggleSearchPanel()">
+			Add video
+		</md-button>
+		<div md-theme="alt1">
+			<md-menu md-position-mode="target-right target">
+				<md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="$ctrl.openMenu($mdOpenMenu, $event)">
+					<md-icon md-menu-origin>build</md-icon>
+				</md-button>
+				<md-menu-content width="4" style="background: #fff">
+					<md-menu-item>
+						<md-button ng-click="$ctrl.clearDB()" class="md-primary md-hue-2">
+							<md-icon md-menu-align-target>delete_forever</md-icon> Clear database
+						</md-button>
+					</md-menu-item>
+				</md-menu-content>
+			</md-menu>
+		</div>
+	</div>
+</md-toolbar>
