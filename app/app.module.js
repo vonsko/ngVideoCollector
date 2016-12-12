@@ -1,7 +1,7 @@
-{
-	angular.module("ngVideoCollector", [
-		"ngMaterial",
-		"components",
-		"common"
-	]);
-}
+(function () {
+  angular.module("ngVideoCollector", [
+    "ngMaterial",
+    "components",
+    "common"
+  ]);
+}());

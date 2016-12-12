@@ -1,3 +1,3 @@
-{
-	angular.module("utils", ["storage"]);
-}
+(function () {
+  angular.module("utils", ["storage"]);
+}());

@@ -1,9 +1,9 @@
-{
-	let videosComponent = {
-		templateUrl: "./app/components/videos/videos.html",
-		controller: "VideosController"
-	};
+(function () {
+  let videosComponent = {
+    templateUrl: "./app/components/videos/videos.html",
+    controller: "VideosController"
+  };
 
-	angular.module("videos")
-		.component("videos", videosComponent);
-}
+  angular.module("videos")
+    .component("videos", videosComponent);
+}());

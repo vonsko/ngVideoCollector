@@ -1,3 +1,3 @@
-{
-	angular.module("videos", []);
-}
+(function () {
+  angular.module("videos", []);
+}());

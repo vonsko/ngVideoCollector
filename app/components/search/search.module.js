@@ -1,3 +1,3 @@
-{
-	angular.module("search", []);
-}
+(function () {
+  angular.module("search", []);
+}());

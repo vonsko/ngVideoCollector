@@ -28,13 +28,13 @@
 	<md-content md-theme="default" md-whiteframe="5" ng-show="$ctrl.searchResults.length">
 		<md-list flex>
 			<md-subheader class="md-no-sticky">2 line item</md-subheader>
-			<md-list-item class="md-3-line" ng-repeat="item in $ctrl.searchResults">
+			<md-list-item class="md-3-line" ng-repeat="item in $ctrl.searchResults" ng-click="$ctrl.addVideo(item)">
 				<img ng-src="{{ item.snippet.thumbnails.default.url }}" alt="{{ item.snippet.title }}" style="margin: 1em 1em 1em 0;" />
 				<div class="md-list-item-text">
 					<h4>{{ item.snippet.title }}</h4>
 					<p>{{ item.snippet.description }}</p>
 				</div>
-				<md-icon md-font-set="material-icons" class="md-secondary md-hue-3" ng-click="$ctrl.addVideo(item)">add</md-icon>
+				<md-icon md-font-set="material-icons" class="md-secondary md-hue-3" ng-if="!$ctrl.inStorage(item.id.videoId)">add</md-icon>
 			</md-list-item>
 		</md-list>
 	</md-content>

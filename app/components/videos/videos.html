@@ -1,19 +1,91 @@
 <div flex>
-	<md-toolbar layout="row" class="md-hue-1">
-		<div class="md-toolbar-tools">
-			<span>All videos</span>
-		</div>
-	</md-toolbar>
+    <md-toolbar layout="row" class="md-hue-1">
+        <div class="md-toolbar-tools">
+            <span>All videos</span>
+            <span flex></span>
+            <md-button class="" ng-class="{'md-raised': !$ctrl.viewSettings.filters}" ng-click="$ctrl.changeViewSettings({filters: null})">All</md-button>
+            <md-button class="" ng-class="{'md-raised': $ctrl.viewSettings.filters === 'fav'}" ng-click="$ctrl.changeViewSettings({filters: 'fav'})">Fav</md-button>
 
-	<md-list flex>
-		<md-subheader class="md-no-sticky">{{ $ctrl.videosList.length }} videos</md-subheader>
-		<md-list-item class="md-3-line" ng-repeat="item in $ctrl.videosList">
-			<img ng-src="{{ item.thumbnails.default.url }}" alt="{{ item.title }}" style="margin: 1em 1em 1em 0;" />
-			<div class="md-list-item-text">
-				<h4>{{ item.name }}</h4>
-				<p>{{ item.description }}</p>
+            <div md-theme="alt1">
+                <md-menu>
+                    <md-button class="md-primary md-hue-2" ng-click="$ctrl.openSelectVideosNumber($mdOpenMenu, $event)">
+						<md-icon ng-show="$ctrl.viewSettings.sorts === 'newest'">keyboard_arrow_down</md-icon>
+						<md-icon ng-show="$ctrl.viewSettings.sorts === 'oldest'">keyboard_arrow_up</md-icon>
+						{{ $ctrl.viewSettings.videosCount }}
+					</md-button>
+                    <md-menu-content style="background: #fff" width="4">
+                        <md-menu-item>
+                            <md-button class="md-primary md-hue-2" ng-click="$ctrl.changeViewSettings({sorts: 'newest'})">
+								<md-icon md-menu-align-target ng-if="$ctrl.viewSettings.sorts === 'newest'">check</md-icon>
+								Newest first
+							</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button class="md-primary md-hue-2" ng-click="$ctrl.changeViewSettings({sorts: 'oldest'})">
+								<md-icon md-menu-align-target ng-if="$ctrl.viewSettings.sorts === 'oldest'">check</md-icon>
+								Oldest first
+							</md-button>
+                        </md-menu-item>
+                        <md-menu-divider></md-menu-divider>
+                        <md-menu-item>
+                            <md-button class="md-primary md-hue-2" ng-click="$ctrl.changeViewSettings({videosCount: 10})">
+								<md-icon md-menu-align-target ng-if="$ctrl.viewSettings.videosCount === 10">check</md-icon>
+								10
+							</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button class="md-primary md-hue-2" ng-click="$ctrl.changeViewSettings({videosCount: 25})">
+								<md-icon md-menu-align-target ng-if="$ctrl.viewSettings.videosCount === 25">check</md-icon>
+								25
+							</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button class="md-primary md-hue-2" ng-click="$ctrl.changeViewSettings({videosCount: 50})">
+								<md-icon md-menu-align-target ng-if="$ctrl.viewSettings.videosCount === 50">check</md-icon>
+								50
+							</md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button class="md-primary md-hue-2" ng-click="$ctrl.changeViewSettings({videosCount: 100})">
+								<md-icon md-menu-align-target ng-if="$ctrl.viewSettings.videosCount === 100">check</md-icon>
+								100
+							</md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+            </div>
+            <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-class="{'md-raised': $ctrl.viewSettings.layout === 'list'}" ng-click="$ctrl.changeViewSettings({layout: 'list'})">
+                <md-icon>view_list</md-icon>
+            </md-button>
+            <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-class="{'md-raised': $ctrl.viewSettings.layout === 'grid'}" ng-click="$ctrl.changeViewSettings({layout: 'grid'})">
+                <md-icon>view_comfy</md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-list flex style="padding-top: 0;">
+        <md-toolbar class="md-hue-3" layout="row" md-theme="alt1">
+			<div class="md-toolbar-tools">
+				<span>{{ $ctrl.videosList.info.allItemsLength }} videos</span>
+				<span style="opacity: .3; margin: 0 16px;">
+					{{($ctrl.viewSettings.page + 1) +" / "+ $ctrl.videosList.info.total }}
+				</span>
+				<span flex></span>
+				<md-button ng-click="$ctrl.getPage(0)" class="md-icon-button"><md-icon>first_page</md-icon></md-button>
+				<md-button ng-click="$ctrl.getPrevPage()" class="md-icon-button"><md-icon>keyboard_arrow_left</md-icon></md-button>
+				<md-button ng-click="$ctrl.getNextPage()" class="md-icon-button"><md-icon>keyboard_arrow_right</md-icon></md-button>
+				<md-button ng-click="$ctrl.getPage($ctrl.videosList.info.total - 1)" class="md-icon-button"><md-icon>last_page</md-icon></md-button>
 			</div>
-			<md-icon md-font-set="material-icons" class="md-secondary md-hue-3" ng-click="null" aria-label="add to fav">favorite_border</md-icon>
-		</md-list-item>
-	</md-list>
+		</md-toolbar>
+        <md-list-item class="md-3-line" ng-repeat="item in $ctrl.videosList.results">
+            <img ng-src="{{ item.thumbnails.default.url }}" alt="{{ item.title }}" style="margin: 1em 1em 1em 0;" />
+            <div class="md-list-item-text">
+                <h4>{{ item.name }}</h4>
+                <p>{{ item.description }}</p>
+            </div>
+            <md-icon md-font-set="material-icons" class="md-secondary md-hue-3" ng-click="null" aria-label="add to fav">play_circle_filled</md-icon>
+            <md-icon md-font-set="material-icons" class="md-secondary md-hue-3" ng-click="$ctrl.favToggle(item)" aria-label="add to fav"><span ng-show="item.fav">favorite</span><span ng-show="!item.fav">favorite_border</span></md-icon>
+            <md-icon md-font-set="material-icons" class="md-secondary md-hue-3" ng-click="$ctrl.deleteVideo(item)" aria-label="add to fav">delete_forever</md-icon>
+        </md-list-item>
+    </md-list>
 </div>
